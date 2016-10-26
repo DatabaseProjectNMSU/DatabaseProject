@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/******
+.button {
+    width: 65px;
+    height:25px;
+    background-color: darkslategrey;
+}
+
+*****/
+
+.w3-btn {
+    padding: 5px;
+    background-color: darkslategrey;
+    border: 1px;
+    border-color: black;
+    color: white;
+    text-decoration: none;
+}
