@@ -12,7 +12,7 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Sign in to Tenant Account</h1>
+    <h1>Sign-in to Tenant Account</h1>
     <p>Please enter your information.</p>
 
     <html>
