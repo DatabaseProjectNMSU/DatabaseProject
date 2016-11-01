@@ -10,7 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-sdjffsdjf
+
 <div class="jumbotron text-center">
     <h1>Tenant</h1>
     <p>Pay us rent.</p>
