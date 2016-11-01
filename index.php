@@ -14,7 +14,7 @@
 <div class="jumbotron text-center">
     <h1>Barnes & Read Leasing Says Spencer yo</h1>
     <p>Slum lords of LC</p>
-</div>jsdlkjlksjdflkjsl
+</div>
 
 <div class="container">
     <div class="row">
