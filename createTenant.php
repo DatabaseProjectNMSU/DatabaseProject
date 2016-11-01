@@ -21,7 +21,7 @@
     <form action="TenantCreateAccount.php" method="post">
         First Name: <input type="text" name="fname"><br>
         Last Name: <input type="text" name="lname"><br>
-        AccountID: <input type="text" name="id"><br>
+        AccountID: <input type="text" name="accId"><br>
         E-mail: <input type="text" name="email"><br>
         Birth Day: <input type="text" name="day"><br>
         Birth Month: <input type="text" name="month"><br>

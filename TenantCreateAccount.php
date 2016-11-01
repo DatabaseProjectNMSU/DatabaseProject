@@ -7,8 +7,13 @@
  */
 
 
-    $name =  $_POST["name"];
+    $fname =  $_POST["fname"];
+    $lname = $_POST["lname"];
+    $accId = $_POST["accId"];
     $email = $_POST["email"];
+    $day = $_POST["day"];
+    $month = $_POST["month"];
+    $year = $_POST["year"];
 
 
 
