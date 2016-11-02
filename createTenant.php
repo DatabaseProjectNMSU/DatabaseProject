@@ -12,20 +12,19 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Sign-in to Tenant Account</h1>
+    <h1>Create Tenant Account</h1>
     <p>Please enter your information.</p>
 
     <html>
     <body>
 
-    <form action="tenant/TenantCreateAccount.php" method="post">
+    <form action="addInfo.php" method="POST">
+        UserID: <input type="text" name="userid"><br>
+        Password:<input type="text" name="pw"><br>
         First Name: <input type="text" name="fname"><br>
         Last Name: <input type="text" name="lname"><br>
-        AccountID: <input type="text" name="accId"><br>
         E-mail: <input type="text" name="email"><br>
-        Birth Day: <input type="text" name="day"><br>
-        Birth Month: <input type="text" name="month"><br>
-        Birth Year: <input type="text" name="year"><br>
+        Birthday (YYYY-MM-DD): <input type="text" name="dob"><br>
 
         <input type="submit">
     </form>
