@@ -2,7 +2,7 @@
 include('Connection.php');
 include('Constants.php');
 
-$conn= GetConnection($DBUser, $DBpass, $DBHost,$BDname);
+$conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $userid = trim($_POST['userid']);
