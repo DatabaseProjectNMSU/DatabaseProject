@@ -1,6 +1,6 @@
 <?php
 include('Connection.php');
-include('Contants.php');
+include('Constants.php');
 
 $conn= GetConnection($DBUser, $DBpass, $DBHost,$BDname);
 
@@ -23,3 +23,4 @@ if(mysql_query($query,$conn)){
     echo mysql_error();
 }
 mysql_close($conn);
+?>

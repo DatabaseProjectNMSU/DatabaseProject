@@ -19,12 +19,12 @@
     <body>
 
     <form action="addInfo.php" method="POST">
-        UserID: <input type="text" name="userid"><br>
-        Password:<input type="text" name="pw"><br>
-        First Name: <input type="text" name="fname"><br>
-        Last Name: <input type="text" name="lname"><br>
-        E-mail: <input type="text" name="email"><br>
-        Birthday (YYYY-MM-DD): <input type="text" name="dob"><br>
+        UserID: <input type="text" name="userid" value=""><br>
+        Password:<input type="text" name="pw" value=""><br>
+        First Name: <input type="text" name="fname" value=""><br>
+        Last Name: <input type="text" name="lname" value=""><br>
+        E-mail: <input type="text" name="email" value=""><br>
+        Birthday (YYYY-MM-DD): <input type="text" name="dob" value=""><br>
 
         <input type="submit">
     </form>
