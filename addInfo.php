@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     echo "Something went wrong!!";
 }
 
-$query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$email','$dob')";
+$query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$dob','$email')";
 if(mysql_query($query,$conn)){
     echo 'DONE';
     mysql_close($conn);
