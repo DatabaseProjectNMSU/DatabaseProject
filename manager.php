@@ -13,25 +13,20 @@
 
 <div class="jumbotron text-center">
     <h1>Manager</h1>
-    <p>Lets look at some maintenance requests</p>
+    <p>Lets ignore some maintenance requests</p>
 </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
-            <h3>Tenant</h3>
-            <p>You can access your account here</p>
-            <a class="w3-btn" href="https://google.com">Tenant</a>
+        <div class="col-sm-8">
+            <h3>Login</h3>
+            <p>You can access your manager account here</p>
+            <a class="w3-btn" href="./manager/man_log_in.php">Login</a>
         </div>
         <div class="col-sm-4">
-            <h3>Manager</h3>
-            <p>Manage properties, handle accounts, and more</p>
-            <a class="w3-btn" href="manager.php">Manager</a>
-        </div>
-        <div class="col-sm-4">
-            <h3>Employee</h3>
-            <p>Access necesary information to get stuff done...</p>
-            <a class="w3-btn" href="https://google.com">Employee</a>
+            <h3>Create account</h3>
+            <p>New to Management?</p>
+            <a class="w3-btn" href="createManager.php">Create Account</a>
         </div>
     </div>
 </div>
