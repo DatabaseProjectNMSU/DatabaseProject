@@ -17,10 +17,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 $query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$dob','$email')";
 if(mysql_query($query,$conn)){
-    echo 'DONE';
+    echo '<script type="text/javascript">';
+    echo 'alert("Account creation successful!\n Redirecting to login page!");';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/tenant.php";';
+    echo '</script>';
     mysql_close($conn);
 } else {
     echo mysql_error();
 }
+
 mysql_close($conn);
 ?>
