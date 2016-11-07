@@ -26,7 +26,7 @@ if($userpw==null){
 if($userpw==$pw){
     echo '<script type="text/javascript">';
     echo 'alert("Log-in successful!");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/";';
+    echo 'document.location.href="./viewAccount.php";';
     echo '</script>';
     mysql_close($conn);
 
