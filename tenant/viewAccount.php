@@ -27,32 +27,33 @@ include('../Constants.php');
             <p>You can access your account here</p>
             <?php
             $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
-            $query="SELECT * FROM User WHERE UserID='$userid'";
-            $result=mysql_query($query,$conn);
+            $query="SELECT * FROM User WHERE UserID='1'";
+            $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+            $data=mysql_fetch_assoc($result);
 
-            echo "<table border='1'>
-                <tr>
-                <th>UserID</th>
-                <th>Password</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Birthday</th>
-                <th>Email</th>
-                </tr>";
-
-            while($row = mysqli_fetch_array($result))
-            {
+            if($result!=null) {
+                echo "<table border='1'>
+                    <tr>
+                    <th>UserID</th>
+                    <th>Password</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birthday</th>
+                    <th>Email</th>
+                    </tr>";
                 echo "<tr>";
-                echo "<td>" . $row['UserID'] . "</td>";
-                echo "<td>" . $row['Password'] . "</td>";
-                echo "<td>" . $row['FirstName'] . "</td>";
-                echo "<td>" . $row['LastName'] . "</td>";
-                echo "<td>" . $row['Birthday'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
+                echo "<td>".$data["UserID"]."</td>";
+                echo "<td>".$data["Password"]."</td>";
+                echo "<td>".$data["FirstName"]."</td>";
+                echo "<td>".$data["LastName"]."</td>";
+                echo "<td>".$data["Birthday"]."</td>";
+                echo "<td>".$data["email"]."</td>";
                 echo "</tr>";
-            }
-            echo "</table>";
 
+                echo "</table>";
+            }else{
+                echo "Something went wrong!";
+            }
             mysql_close($conn);
             ?>
 
