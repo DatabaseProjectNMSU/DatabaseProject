@@ -12,13 +12,13 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Create Tenant Account</h1>
+    <h1>Log-in to Tenant Account</h1>
     <p>Please enter your information.</p>
 
     <html>
     <body>
 
-    <form action="tenant/TenantLogIn.php" method="post">
+    <form action="tenant/checkPw.php" method="post">
         Username: <input type="text" name="uname"><br>
         Password: <input type="password" name="psw">
 
