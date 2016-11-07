@@ -16,6 +16,13 @@ $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
 $data = mysql_fetch_assoc($result);
 $userpw=$data["Password"];
 
+if($userpw==null){
+    echo '<script type="text/javascript">';
+    echo 'alert("You done messed up A-a-ron!\n Username or Password not correct!");';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/tenant/ten_log_in.php";';
+    echo '</script>';
+}
+
 if($userpw==$pw){
     echo '<script type="text/javascript">';
     echo 'alert("Log-in successful!");';
