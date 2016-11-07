@@ -18,7 +18,7 @@
     <html>
     <body>
 
-    <form action="tenant/checkPw.php" method="post">
+    <form action="checkPw.php" method="POST">
         Username: <input type="text" name="uname"><br>
         Password: <input type="password" name="psw">
 
