@@ -29,33 +29,44 @@ include('../Constants.php');
             <?php
             $userid=$_SESSION['userid'];
             $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
-            $query="SELECT * FROM User WHERE UserID='$userid'";
+            $query="SELECT * FROM User INNER JOIN UserPhoneNumber WHERE User.UserID='$userid'";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
             $data=mysql_fetch_assoc($result);
 
             if($result!=null) {
-                echo "<table border='1'>
-                    <tr>
-                    <th>UserID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Birthday</th>
-                    <th>Email</th>
-                    </tr>";
+                echo "<table border='1'>";
                 echo "<tr>";
+                echo "<th>UserID</th>";
                 echo "<td>".$data["UserID"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>First Name</th>";
                 echo "<td>".$data["FirstName"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Last Name</th>";
                 echo "<td>".$data["LastName"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Birthday</th>";
                 echo "<td>".$data["Birthday"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Email</th>";
                 echo "<td>".$data["email"]."</td>";
                 echo "</tr>";
-
+                echo "<tr>";
+                echo "<th>Phone</th>";
+                echo "<td>".$data["PhoneNumber"]."</td>";
+                echo "</tr>";
                 echo "</table>";
             }else{
                 echo "Something went wrong!";
             }
             mysql_close($conn);
             ?>
+
+            <a class="w3-btn" href="edictContact.php">Edit Phone</a>
 
         </div>
         <div class="col-sm-4">
@@ -66,7 +77,7 @@ include('../Constants.php');
         <div class="col-sm-4">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
-            <a class="w3-btn" href="ChangePassword.php">Change Password</a>
+            <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
         </div>
     </div>
 </div>

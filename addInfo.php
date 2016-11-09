@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 if(strlen($userid)<8 || strlen($userid)>16){
     echo '<script type="text/javascript">';
     echo 'alert("UserID must be at least 8 characters, but no greater than 16!");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/createTenant.php";';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/createTenant.php";';
     echo '</script>';
 }else{
     $query="SELECT * FROM User WHERE UserID='$userid'";
@@ -25,25 +25,33 @@ if(strlen($userid)<8 || strlen($userid)>16){
     if(mysql_num_rows($result)>0) {
         echo '<script type="text/javascript">';
         echo 'alert("That UserID is already taken!");';
-        echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/createTenant.php";';
+        echo 'document.location.href="http://www.cs.nmsu.edu/~rread/createTenant.php";';
         echo '</script>';
     }else{
         $query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$dob','$email')";
         if (mysql_query($query, $conn)) {
             echo '<script type="text/javascript">';
             echo 'alert("Account creation successful!");';
-           // echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/tenant.php";';
+           // echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant.php";';
             echo '</script>';
-            mysql_close($conn);
-            $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
+            //mysql_close($conn);
+            //$conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
 
-            $query = "insert into Tenant values ('$userid', '$tenant')";
+            //$conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
+            $query="SELECT max(TenantID) as m FROM Tenant";
+            $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+            $data=mysql_fetch_assoc($result); //data now holds value needed
+
+            $str = ++$data['m'];
+
+
+            $query = "insert into Tenant values ('$userid', '$str')";
             if (mysql_query($query, $conn)) {
                 echo '<script type="text/javascript">';
                 echo 'alert("Tenant Account creation successful!\n Redirecting to login page!");';
-                echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/tenant.php";';
+                echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant.php";';
                 echo '</script>';
-                mysql_close($conn);
+                //mysql_close($conn);
             }
         } else {
             echo mysql_error();
