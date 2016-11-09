@@ -64,9 +64,9 @@ include('../Constants.php');
             <a class="w3-btn" href="manager.php">Manager</a>
         </div>
         <div class="col-sm-4">
-            <h3>Employee</h3>
-            <p>Access necesary information to get stuff done...</p>
-            <a class="w3-btn" href="https://google.com">Employee</a>
+            <h3>Change Password</h3>
+            <p>Kick out a roommate?</p>
+            <a class="w3-btn" href="ChangePassword.php">Change Password</a>
         </div>
     </div>
 </div>
