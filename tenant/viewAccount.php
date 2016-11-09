@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+session_start();
 include('../Connection.php');
 include('../Constants.php');
 ?>
@@ -26,8 +27,9 @@ include('../Constants.php');
             <h3>Tenant Info</h3>
             <p>You can access your account here</p>
             <?php
+            $userid=$_SESSION['userid'];
             $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
-            $query="SELECT * FROM User WHERE UserID='1'";
+            $query="SELECT * FROM User WHERE UserID='$userid'";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
             $data=mysql_fetch_assoc($result);
 
@@ -35,7 +37,6 @@ include('../Constants.php');
                 echo "<table border='1'>
                     <tr>
                     <th>UserID</th>
-                    <th>Password</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Birthday</th>
@@ -43,7 +44,6 @@ include('../Constants.php');
                     </tr>";
                 echo "<tr>";
                 echo "<td>".$data["UserID"]."</td>";
-                echo "<td>".$data["Password"]."</td>";
                 echo "<td>".$data["FirstName"]."</td>";
                 echo "<td>".$data["LastName"]."</td>";
                 echo "<td>".$data["Birthday"]."</td>";

@@ -15,16 +15,24 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     echo "Something went wrong!!";
 }
 
-$query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$dob','$email')";
-if(mysql_query($query,$conn)){
+if(strlen($userid)<8){
     echo '<script type="text/javascript">';
-    echo 'alert("Account creation successful!\n Redirecting to login page!");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/tenant.php";';
+    echo 'alert("UserID must be at least 8 characters!");';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/createTenant.php";';
     echo '</script>';
-    mysql_close($conn);
-} else {
-    echo mysql_error();
-}
 
+}else{
+    $query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$dob','$email')";
+    if (mysql_query($query, $conn)) {
+        echo '<script type="text/javascript">';
+        echo 'alert("Account creation successful!\n Redirecting to login page!");';
+        echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/tenant.php";';
+        echo '</script>';
+        mysql_close($conn);
+    } else {
+        echo mysql_error();
+    }
+
+}
 mysql_close($conn);
 ?>
