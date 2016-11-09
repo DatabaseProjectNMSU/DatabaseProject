@@ -2,6 +2,8 @@
 include('Connection.php');
 include('Constants.php');
 
+$tenant="TN000000";
+
 $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -15,31 +17,30 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     echo "Something went wrong!!";
 }
 
-if(strlen($userid)<8 || strlen($userid)>16){
+if(strlen($userid)<8){
     echo '<script type="text/javascript">';
-    echo 'alert("UserID must be at least 8 characters, but no greater than 16!");';
+    echo 'alert("UserID must be at least 8 characters!");';
     echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/createTenant.php";';
     echo '</script>';
 
 }else{
-    $query="SELECT * FROM User WHERE UserID='$userid'";
-    $result=mysql_query($query,$conn);
-    if(mysql_num_rows($result)>0) {
+    $query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$dob','$email')";
+    if (mysql_query($query, $conn)) {
         echo '<script type="text/javascript">';
-        echo 'alert("That UserID is already taken!");';
-        echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/createTenant.php";';
+        echo 'alert("Account creation successful!\n Redirecting to login page!");';
+        echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/tenant.php";';
         echo '</script>';
-    }else{
-        $query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$dob','$email')";
-        if (mysql_query($query, $conn)) {
-            echo '<script type="text/javascript">';
-            echo 'alert("Account creation successful!\n Redirecting to login page!");';
-            echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/tenant.php";';
-            echo '</script>';
-            mysql_close($conn);
-        } else {
-            echo mysql_error();
-        }
+
+    } else {
+        echo mysql_error();
+    }
+    $query = "INSERT INTO Tenant VALUES ('$userid', '$tenant')";
+    if(mysql_query($query, $conn)) {
+        $tenant++;
+        echo $tenant;
+        mysql_close($conn);
+    } else{
+        echo mysql_error();
     }
 
 }
