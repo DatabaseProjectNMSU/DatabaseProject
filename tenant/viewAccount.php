@@ -25,7 +25,7 @@ include('../Constants.php');
     <div class="row">
         <div class="col-sm-4">
             <h3>Tenant Info</h3>
-            <p>You can access your account here</p>
+            <!--<p>You can access your account here</p>-->
             <?php
             $userid=$_SESSION['userid'];
             $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
@@ -67,12 +67,86 @@ include('../Constants.php');
             ?>
 
             <a class="w3-btn" href="../editInfo.php">Edit Phone</a>
-            <a class="w3-btn" href="..editInfo.php">Edit Email</a>
+            <a class="w3-btn" href="../editInfo.php">Edit Email</a>
 
         </div>
         <div class="col-sm-4">
-            <h3>Manager</h3>
-            <p>Manage properties, handle accounts, and more</p>
+            <h3>Apartment Information</h3>
+            <?php
+            $userid=$_SESSION['userid'];
+            $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
+            $query="Select TenantID, StartDate,PropertyID, ApartmentNumber from User u, Tenant t,StayIn s where s.TenantUID=u.UserID and u.UserID=t.UserID and u.UserID='$userid'";
+            $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+            $data=mysql_fetch_assoc($result);
+            $tenantid=$data['TenantID'];
+            $propertyid=$data['PropertyID'];
+
+            if($result!=null) {
+                echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>PropertyID</th>";
+                echo "<td>".$data["PropertyID"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Apartment Number</th>";
+                echo "<td>".$data["ApartmentNumber"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Living in squalor since</th>";
+                echo "<td>".$data["StartDate"]."</td>";
+                echo "</tr>";
+                echo "</table>";
+            }else{
+                echo "Something went wrong!";
+            }
+            $query="Select FirstName,LastName,PhoneNumber, o.StreetName, o.StreetNumber, o.City, o.state, o.Zip from Property p, User u, Manager m, Office o WHERE p.PropertyID='$propertyid' and p.ManagerUID=u.UserID and m.UserID=u.UserID and o.OfficeID=m.OfficeID";
+            $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+            $data=mysql_fetch_assoc($result);
+
+            echo "<br>";
+            echo "<p><b>Apartment Manager Information</b></p>";
+            if($result!=null) {
+                echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>Manager First Name</th>";
+                echo "<td>".$data["FirstName"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Last Name</th>";
+                echo "<td>".$data["LastName"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Office Phone Number</th>";
+                echo "<td>".$data["PhoneNumber"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Office Street Name</th>";
+                echo "<td>".$data["StreetName"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Street Number</th>";
+                echo "<td>".$data["StreetNumber"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>City</th>";
+                echo "<td>".$data["City"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>State</th>";
+                echo "<td>".$data["state"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Zip</th>";
+                echo "<td>".$data["Zip"]."</td>";
+                echo "</tr>";
+                echo "</table>";
+            }else{
+                echo "Something went wrong!";
+            }
+
+
+            mysql_close($conn);
+            ?>
             <a class="w3-btn" href="manager.php">Manager</a>
         </div>
         <div class="col-sm-4">
