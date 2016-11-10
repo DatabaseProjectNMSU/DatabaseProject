@@ -12,8 +12,8 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Create Tenant Account</h1>
-    <p>Please enter your information.</p>
+    <h1>Make Payment</h1>
+    <p>Please stay up to date on your rent.</p>
 
     <html>
     <body>
@@ -25,7 +25,7 @@
             <option value="debit">Debit</option>
             <option value="check">Check</option>
         </select>
-        <br><br>
+        <br>
         <input type="submit">
     </form>
 
