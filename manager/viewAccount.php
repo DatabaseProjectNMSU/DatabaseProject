@@ -172,6 +172,29 @@ include('../Constants.php');
 
         </div>-->
     </div>
+    <div>
+        <div class="col-sm-4">
+            <h3>Change Password</h3>
+            <p>Kick out a roommate?</p>
+            <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
+            <h3>Change phone</h3>
+            <p>New Iphone?</p>
+            <a class="w3-btn" href="editContact.php?a=phone">Change Phone</a>
+            <h3>Change Email</h3>
+            <p>Blocked an ex?</p>
+            <a class="w3-btn" href="editContact.php?a=email">Change Email</a>
+
+        </div>
+        <div>
+        <h3>Maintainance Requests</h3>
+        <p>View Maintainance Requests</p>
+            <form action="getMaintain.php" method="POST">
+                PropertyID: <input type="text" name="propertyid" value=""><br>
+                <input type="submit">
+            </form>
+        </div>
+
+    </div>
 </div>
 
 </body>
