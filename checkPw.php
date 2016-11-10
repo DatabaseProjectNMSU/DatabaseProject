@@ -1,7 +1,7 @@
 <?php
 session_start();
-include('../Connection.php');
-include('../Constants.php');
+include('Connection.php');
+include('Constants.php');
 
 $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
 
@@ -28,7 +28,7 @@ if($userpw==$pw){
     $_SESSION['userid']=$userid;
     echo '<script type="text/javascript">';
     echo 'alert("Log-in successful!");';
-    echo 'document.location.href="./viewAccount.php";';
+    echo 'document.location.href="./tenant/viewAccount.php";';
     echo '</script>';
     mysql_close($conn);
 

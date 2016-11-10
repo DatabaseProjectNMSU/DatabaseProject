@@ -7,49 +7,60 @@ $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
 if($_SERVER['REQUEST_METHOD']=='POST') {
     $amount = trim($_POST['amt']);
     $method = trim($_POST['method']);
+} else {
+    echo "<P>Something went wrong!!</P>";
 }
 
 
 $user = $_SESSION['userid'];
+
 //need TenUID
-$query = "SELECT TenantID FROM Tenant WHERE UserID = '$user'";
+
+$query = "SELECT UserID FROM Tenant WHERE UserID = '$user'";
 $result = mysql_query($query, $conn) or die('SQL Error :: ' . mysql_error());
-$tenUid = mysql_fetch_assoc($result); //data now holds value needed
+$tenUid1 = mysql_fetch_array($result); //data now holds value needed
+$tenUid = $tenUid1['UserID'];
 //need propId
 
 $query=
     "SELECT PropertyID, ApartmentNumber
 FROM StayIn
-WHERE TenantUID = '$userID'";
+WHERE TenantUID = '$user';";
 $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
-echo $data=mysql_fetch_assoc($result); //data now holds value needed
-$propID=data['PropertyID'];
+$data=mysql_fetch_assoc($result); //data now holds value needed
+$propID=$data['PropertyID'];
+
 //need Apt NUm
-$aptNum = data['ApartmentNumber'];
+$aptNum = $data['ApartmentNumber'];
 //need Transaction ID
 date_default_timezone_set('America/Denver');
 $date = date('Y-m-d', time());
 
-} else {
-echo "<P>Something went wrong!!</P>";
-}
 
-
-
-$query="SELECT max(TransactionID) as m FROM Payment";
+$query="SELECT max(TransactionID) as m FROM Payment;";
 $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
-$oldID=mysql_fetch_assoc($result); //data now holds value needed
-
+$dataID = mysql_fetch_assoc($result); //data now holds value needed
+$oldID = $dataID['m'];
 $newID = ++$oldID;
 
+$query="INSERT INTO Payment VALUES (".$newID.",'$method',".$amount.",'$date');";
+$a = mysql_query($query, $conn) or die('SQL Error :: '.mysql_error());
 
-//$query="INSERT INTO Payment(TransactionID,PaymentMethod,Amount,Date) VALUES ($newID,'$method',$amount,'$date');";
-//mysql_query($query, $conn) or die('SQL Error :: '.mysql_error());
+$query = "INSERT INTO MakePayment VALUES ('$tenUid',".$propID.",".$aptNum.",".$newID.");";
+$b = mysql_query($query, $conn) or die('SQL Error :: '.mysql_error());
 
-//$query = "INSERT INTO MakePayment(TenantUID, PropertyID, ApartmentNumber, TransactionID) VALUES '$TenUID', $propID, $aptNum, $newID)";
-//mysql_query($query, $conn) or die('SQL Error :: '.mysql_error());
+if($a != FALSE && $b != FALSE){
+    echo '<script type="text/javascript">';
+    echo 'alert("Payment successfully processed.");';
+    echo 'document.location.href="viewAccount.php";';
+    echo '</script>';
+}
+else{
+    echo '<script type="text/javascript">';
+    echo 'alert("Issue processing payment.");';
+    echo 'document.location.href="makePayment.php";';
+    echo '</script>';
+}
 
-mysql_close($conn);?>
-
-
+mysql_close($conn);
 ?>
