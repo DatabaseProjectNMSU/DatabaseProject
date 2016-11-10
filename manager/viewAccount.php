@@ -64,18 +64,6 @@ include('../Constants.php');
             }else{
                 echo "Something went wrong!";
             }
-            mysql_close($conn);
-            ?>
-
-            <!--<a class="w3-btn" href="../editInfo.php">Edit Phone</a>
-            <a class="w3-btn" href="../editInfo.php">Edit Email</a> -->
-
-        </div>
-        <div class="col-sm-4">
-            <h3>Your Office Information</h3>
-            <?php
-            $userid=$_SESSION['userid'];
-            $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
             $query="Select o.OfficeID, PhoneNumber, StreetName, StreetNumber, City, State, Zip from Office o, Manager m where m.UserID='$userid' and m.OfficeID=o.OfficeID";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
             $data=mysql_fetch_assoc($result);
@@ -118,6 +106,18 @@ include('../Constants.php');
                 echo "Something went wrong!";
             }
 
+            mysql_close($conn);
+            ?>
+
+            <!--<a class="w3-btn" href="../editInfo.php">Edit Phone</a>
+            <a class="w3-btn" href="../editInfo.php">Edit Email</a> -->
+
+        </div>
+        <div class="col-sm-4">
+            <h3>Office Employees</h3>
+            <?php
+            $userid=$_SESSION['userid'];
+            $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
             $query="Select FirstName, LastName, Birthday, email, PhoneNumber, EmployeeID, Title From Staff s, User u, UserPhoneNumber p where s.UserID=u.UserID and OfficeID='$officeid' and p.UserID=u.userID";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
             //$data=mysql_fetch_assoc($result);
@@ -156,7 +156,7 @@ include('../Constants.php');
             mysql_close($conn);
             ?>
         </div>
-        <div class="col-sm-4">
+        <!--<div class="col-sm-4">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
             <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
@@ -170,7 +170,7 @@ include('../Constants.php');
             <p>Most Important Button Here</p>
             <a class="w3-btn" href="makePayment.php">Make Payment</a>
 
-        </div>
+        </div>-->
     </div>
 </div>
 
