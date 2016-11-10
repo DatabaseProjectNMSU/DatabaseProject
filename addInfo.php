@@ -5,7 +5,6 @@ $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
 $tenant = 'TN000000';
 session_start();
 $type=$_SESSION['Type'];
-//$type2=$_GET['a'];
 echo $type;
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
