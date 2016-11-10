@@ -66,7 +66,8 @@ include('../Constants.php');
             mysql_close($conn);
             ?>
 
-            <a class="w3-btn" href="edictContact.php">Edit Phone</a>
+            <a class="w3-btn" href="../editInfo.php">Edit Phone</a>
+            <a class="w3-btn" href="..editInfo.php">Edit Email</a>
 
         </div>
         <div class="col-sm-4">

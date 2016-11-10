@@ -12,21 +12,21 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Tenant</h1>
-    <p>Pay us rent. Or Else.</p>
+    <h1>Staff</h1>
+    <p>Lets get to work!/p>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
             <h3>Login</h3>
-            <p>You can access your account here</p>
-            <a class="w3-btn" href="./tenant/ten_log_in.php">Login</a>
+            <p>You can access your employee account here</p>
+            <a class="w3-btn" href="">Login</a>
         </div>
         <div class="col-sm-4">
             <h3>Create account</h3>
-            <p>New to the building?</p>
-            <a class="w3-btn" href="tenant/createTenant.php">Create Account</a>
+            <p>New Employee?</p>
+            <a class="w3-btn" href="./staff/createStaff.php">Create Account</a>
         </div>
     </div>
 </div>
