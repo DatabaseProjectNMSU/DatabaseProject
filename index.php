@@ -30,8 +30,8 @@
         </div>
         <div class="col-sm-4">
             <h3>Employee</h3>
-            <p>Access necesary information to get stuff done...</p>
-            <a class="w3-btn" href="https://google.com">Employee</a>
+            <p>Access necessary information to get stuff done...</p>
+            <a class="w3-btn" href="./staff.php">Employee</a>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 session_start();
-$_SESSION["Type"]="Man";
+$_SESSION['Type']='Man';
 ?>
 <head>
     <title>Barnes & Read Leasing</title>
@@ -16,7 +16,7 @@ $_SESSION["Type"]="Man";
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Create Tenant Account</h1>
+    <h1>Create Manager Account</h1>
     <p>Please enter your information.</p>
 
     <html>

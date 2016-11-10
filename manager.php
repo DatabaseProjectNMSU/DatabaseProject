@@ -26,7 +26,7 @@
         <div class="col-sm-4">
             <h3>Create account</h3>
             <p>New to Management?</p>
-            <a class="w3-btn" href="createManager.php">Create Account</a>
+            <a class="w3-btn" href="./manager/createManager.php">Create Account</a>
         </div>
     </div>
 </div>

@@ -13,7 +13,7 @@
 
 <div class="jumbotron text-center">
     <h1>Staff</h1>
-    <p>Lets get to work!/p>
+    <p>Lets get to work!</p>
 </div>
 
 <div class="container">

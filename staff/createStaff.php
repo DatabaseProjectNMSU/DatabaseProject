@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 session_start();
-$_SESSION["Type"]="Staff";
+$_SESSION['Type']='Staff';
 ?>
 <head>
     <title>Barnes & Read Leasing</title>
