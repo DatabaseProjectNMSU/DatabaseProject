@@ -20,7 +20,7 @@ $userpw=$data["Password"];
 if($userpw==null){
     echo '<script type="text/javascript">';
     echo 'alert("You done messed up A-a-ron!\n Username or Password not correct!");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/ten_log_in.php";';
+    //echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/ten_log_in.php";';
     echo '</script>';
 }
 
@@ -35,7 +35,7 @@ if($userpw==$pw){
 } else {
     echo '<script type="text/javascript">';
     echo 'alert("You done messed up A-a-ron!\n Username or Password not correct!");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/ten_log_in.php";';
+    //echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/ten_log_in.php";';
     echo '</script>';
 }
 
