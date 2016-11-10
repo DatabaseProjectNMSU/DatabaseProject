@@ -49,6 +49,7 @@ if($username == $userid) {
 else{
     echo '<script type="text/javascript">';
     echo 'alert("Password update creation NOT successful!\n Check Username.");';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/";';
     echo '</script>';
 }
 
