@@ -100,7 +100,7 @@ include('../Constants.php');
             }else{
                 echo "Something went wrong!";
             }
-            $query="Select FirstName,LastName,PhoneNumber, o.StreetName, o.StreetNumber, o.City, o.state, o.Zip from Property p, User u, Manager m, Office o WHERE p.PropertyID='$propertyid' and p.ManagerUID=u.UserID and m.UserID=u.UserID and o.OfficeID=m.OfficeID";
+            $query="Select FirstName,LastName,PhoneNumber, o.StreetName, o.StreetNumber, o.City, o.State, o.Zip from Property p, User u, Manager m, Office o WHERE p.PropertyID='$propertyid' and p.ManagerUID=u.UserID and m.UserID=u.UserID and o.OfficeID=m.OfficeID";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
             $data=mysql_fetch_assoc($result);
 
@@ -134,7 +134,7 @@ include('../Constants.php');
                 echo "</tr>";
                 echo "<tr>";
                 echo "<th>State</th>";
-                echo "<td>".$data["state"]."</td>";
+                echo "<td>".$data["State"]."</td>";
                 echo "</tr>";
                 echo "<tr>";
                 echo "<th>Zip</th>";

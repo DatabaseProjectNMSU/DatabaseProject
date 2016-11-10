@@ -6,7 +6,7 @@ include('../Connection.php');
 include('../Constants.php');
 ?>
 <head>
-    <title>Tenant Account</title>
+    <title>Manager Account</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,14 +17,14 @@ include('../Constants.php');
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Tenant Account</h1>
-    <p>View your Personal info, make payments, etc...</p>
+    <h1>Manager Account</h1>
+    <p>Lets ignore some work orders!</p>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <h3>Tenant Info</h3>
+            <h3>Manager Info</h3>
             <!--<p>You can access your account here</p>-->
             <?php
             $userid=$_SESSION['userid'];
@@ -72,16 +72,17 @@ include('../Constants.php');
 
         </div>
         <div class="col-sm-4">
-            <h3>Apartment Information</h3>
+            <h3>Your Office Information</h3>
             <?php
             $userid=$_SESSION['userid'];
             $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
             $query="Select o.OfficeID, PhoneNumber, StreetName, StreetNumber, City, State, Zip from Office o, Manager m where m.UserID='$userid' and m.OfficeID=o.OfficeID";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
             $data=mysql_fetch_assoc($result);
+            $officeid=$data['OfficeID'];
 
             echo "<br>";
-            echo "<p><b>Apartment Manager Information</b></p>";
+            echo "<p><b>Office</b></p>";
             if($result!=null) {
                 echo "<table border='1'>";
                 echo "<tr>";
@@ -106,12 +107,46 @@ include('../Constants.php');
                 echo "</tr>";
                 echo "<tr>";
                 echo "<th>State</th>";
-                echo "<td>".$data["state"]."</td>";
+                echo "<td>".$data["State"]."</td>";
                 echo "</tr>";
                 echo "<tr>";
                 echo "<th>Zip</th>";
                 echo "<td>".$data["Zip"]."</td>";
                 echo "</tr>";
+                echo "</table>";
+            }else{
+                echo "Something went wrong!";
+            }
+
+            $query="Select FirstName, LastName, Birthday, email, PhoneNumber, EmployeeID, Title From Staff s, User u, UserPhoneNumber p where s.UserID=u.UserID and OfficeID='$officeid' and p.UserID=u.userID";
+            $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+            //$data=mysql_fetch_assoc($result);
+
+            echo "<br>";
+            echo "<p><b>Your Minions</b></p>";
+            if($result!=null) {
+                echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>FirstName</th>";
+                echo "<th>LastName</th>";
+                echo "<th>Birthday</th>";
+                echo "<th>email</th>";
+                echo "<th>Phone Number</th>";
+                echo "<th>Employee ID</th>";
+                echo "<th>Title</th>";
+                echo "</tr>";
+
+                while($row=mysql_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row["FirstName"] . "</td>";
+                    echo "<td>" . $row["LastName"] . "</td>";
+                    echo "<td>" . $row["Birthday"] . "</td>";
+                    echo "<td>" . $row["email"] . "</td>";
+                    echo "<td>" . $row["PhoneNumber"] . "</td>";
+                    echo "<td>" . $row["EmployeeID"] . "</td>";
+                    echo "<td>" . $row["Title"] . "</td>";
+                    echo "</tr>";
+                }
                 echo "</table>";
             }else{
                 echo "Something went wrong!";
