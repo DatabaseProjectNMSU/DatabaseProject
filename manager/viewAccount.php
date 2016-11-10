@@ -17,7 +17,7 @@ include('../Constants.php');
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Manager Account</h1>
+    <h1>Tenant Account</h1>
     <p>View your Personal info, make payments, etc...</p>
 </div>
 
@@ -25,7 +25,7 @@ include('../Constants.php');
     <div class="row">
         <div class="col-sm-4">
             <h3>Tenant Info</h3>
-            <p>You can access your account here</p>
+            <!--<p>You can access your account here</p>-->
             <?php
             $userid=$_SESSION['userid'];
             $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
@@ -37,7 +37,8 @@ include('../Constants.php');
                 echo "<table border='1'>";
                 echo "<tr>";
                 echo "<th>UserID</th>";
-                echo "<td>".$data["UserID"]."</td>";
+                echo "<td>$userid</td>";
+                //echo "<td>".$data["UserID"]."</td>";
                 echo "</tr>";
                 echo "<tr>";
                 echo "<th>First Name</th>";
@@ -66,24 +67,74 @@ include('../Constants.php');
             mysql_close($conn);
             ?>
 
-            <a class="w3-btn" href="edictContact.php">Edit Phone</a>
+            <!--<a class="w3-btn" href="../editInfo.php">Edit Phone</a>
+            <a class="w3-btn" href="../editInfo.php">Edit Email</a> -->
 
         </div>
         <div class="col-sm-4">
-            <h3>Manager</h3>
-            <p>Manage properties, handle accounts, and more</p>
-            <a class="w3-btn" href="manager.php">Manager</a>
+            <h3>Apartment Information</h3>
+            <?php
+            $userid=$_SESSION['userid'];
+            $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
+            $query="Select o.OfficeID, PhoneNumber, StreetName, StreetNumber, City, State, Zip from Office o, Manager m where m.UserID='$userid' and m.OfficeID=o.OfficeID";
+            $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+            $data=mysql_fetch_assoc($result);
+
+            echo "<br>";
+            echo "<p><b>Apartment Manager Information</b></p>";
+            if($result!=null) {
+                echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>OfficeID</th>";
+                echo "<td>".$data["OfficeID"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Office Phone Number</th>";
+                echo "<td>".$data["PhoneNumber"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Office Street Name</th>";
+                echo "<td>".$data["StreetName"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Street Number</th>";
+                echo "<td>".$data["StreetNumber"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>City</th>";
+                echo "<td>".$data["City"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>State</th>";
+                echo "<td>".$data["state"]."</td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>Zip</th>";
+                echo "<td>".$data["Zip"]."</td>";
+                echo "</tr>";
+                echo "</table>";
+            }else{
+                echo "Something went wrong!";
+            }
+
+
+            mysql_close($conn);
+            ?>
         </div>
         <div class="col-sm-4">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
-            <a class="w3-btn" href="ChangePassword.php?a=user">Change Password</a>
+            <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
             <h3>Change phone</h3>
             <p>New Iphone?</p>
-            <a class="w3-btn" href="ChangePassword.php?a=phone">Change Phone</a>
+            <a class="w3-btn" href="editContact.php?a=phone">Change Phone</a>
             <h3>Change Email</h3>
             <p>Blocked an ex?</p>
-            <a class="w3-btn" href="ChangePassword.php?a=email">Change Email</a>
+            <a class="w3-btn" href="editContact.php?a=email">Change Email</a>
+            <h3>Make Payment</h3>
+            <p>Most Important Button Here</p>
+            <a class="w3-btn" href="makePayment.php">Make Payment</a>
+
         </div>
     </div>
 </div>

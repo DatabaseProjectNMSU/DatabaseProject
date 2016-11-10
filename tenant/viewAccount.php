@@ -67,8 +67,8 @@ include('../Constants.php');
             mysql_close($conn);
             ?>
 
-            <a class="w3-btn" href="../editInfo.php">Edit Phone</a>
-            <a class="w3-btn" href="../editInfo.php">Edit Email</a>
+            <!--<a class="w3-btn" href="../editInfo.php">Edit Phone</a>
+            <a class="w3-btn" href="../editInfo.php">Edit Email</a> -->
 
         </div>
         <div class="col-sm-4">
@@ -148,7 +148,6 @@ include('../Constants.php');
 
             mysql_close($conn);
             ?>
-            <a class="w3-btn" href="manager.php">Manager</a>
         </div>
         <div class="col-sm-4">
             <h3>Change Password</h3>
