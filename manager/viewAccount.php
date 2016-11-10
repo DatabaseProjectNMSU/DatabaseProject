@@ -17,7 +17,7 @@ include('../Constants.php');
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Tenant Account</h1>
+    <h1>Manager Account</h1>
     <p>View your Personal info, make payments, etc...</p>
 </div>
 
@@ -77,17 +77,13 @@ include('../Constants.php');
         <div class="col-sm-4">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
-            <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
+            <a class="w3-btn" href="ChangePassword.php?a=user">Change Password</a>
             <h3>Change phone</h3>
             <p>New Iphone?</p>
-            <a class="w3-btn" href="editContact.php?a=phone">Change Phone</a>
+            <a class="w3-btn" href="ChangePassword.php?a=phone">Change Phone</a>
             <h3>Change Email</h3>
             <p>Blocked an ex?</p>
-            <a class="w3-btn" href="editContact.php?a=email">Change Email</a>
-            <h3>Make Payment</h3>
-            <p>Most Important Button Here</p>
-            <a class="w3-btn" href="makePayment.php">Make Payment</a>
-
+            <a class="w3-btn" href="ChangePassword.php?a=email">Change Email</a>
         </div>
     </div>
 </div>
