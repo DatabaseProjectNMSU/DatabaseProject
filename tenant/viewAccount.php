@@ -4,6 +4,7 @@
 session_start();
 include('../Connection.php');
 include('../Constants.php');
+$_SESSION['Type'] = 'tenant';
 ?>
 <head>
     <title>Tenant Account</title>
@@ -154,13 +155,13 @@ include('../Constants.php');
         <div class="col-sm-4">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
-            <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
+            <a class="w3-btn" href="../ChangePassword.php">Change Password</a>
             <h3>Change phone</h3>
             <p>New Iphone?</p>
-            <a class="w3-btn" href="editContact.php?a=phone">Change Phone</a>
+            <a class="w3-btn" href="../changePhoneMain.php?a=phone">Change Phone</a>
             <h3>Change Email</h3>
             <p>Blocked an ex?</p>
-            <a class="w3-btn" href="editContact.php?a=email">Change Email</a>
+            <a class="w3-btn" href="../editContact.php?a=email">Change Email</a>
             <h3>Make Payment</h3>
             <p>Most Important Button Here</p>
             <a class="w3-btn" href="makePayment.php">Make Payment</a>
