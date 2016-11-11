@@ -92,8 +92,8 @@ include('../Constants.php');
             <form action="editMaintain.php" method="POST">
                 JobID: <input type="text" name="jobid" value=""><br>
                 Requested Job: <input type="text" name="rjob" value=""><br>
-                Apartment Number: <input type="password" name="aptnum" value=""><br>
-                PropertyID: <input type="password" name="pid" value=""><br>
+                Apartment Number: <input type="text" name="aptnum" value=""><br>
+                PropertyID: <input type="text" name="pid" value=""><br>
                 <input type="submit">
             </form>
 

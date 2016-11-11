@@ -1,10 +1,10 @@
 <?php
-include('Connection.php');
-include('Constants.php');
+include('../Connection.php');
+include('../Constants.php');
 $conn = GetConnection($DBUser, $DBpass, $DBHost, $DBname);
 $tenant = 'TN000000';
 session_start();
-$type = $_SESSION['Type'];
+
 //echo $type;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,9 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pid = trim($_POST['pid']);
 }
 
-$muid=$_SESSION['muid'];
 
-$query = "UPDATE MaintainReq SET RequestedJob='$rjob', ManagerUID='$muid', ApartmentNumber='$aptnum', PropertyID='$pid' WHERE JobID = '$jobid'";
+$query = "UPDATE MaintainReq SET RequestedJob='$rjob', ApartmentNumber='$aptnum', PropertyID='$pid' WHERE JobID = '$jobid'";
 if (mysql_query($query, $conn)) {
     echo '<script type="text/javascript">';
     echo 'alert("Edit Successful!");';
