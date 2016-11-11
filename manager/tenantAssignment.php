@@ -19,7 +19,7 @@ unset($_SESSION['pid']);
 
 <div class="jumbotron text-center">
     <h1>Tenant Management</h1>
-    <p>Lets assign sone apartments!</p>
+    <p>Lets assign some apartments!</p>
 </div>
 
 <div class="container">
