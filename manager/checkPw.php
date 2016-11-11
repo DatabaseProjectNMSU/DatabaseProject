@@ -12,6 +12,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
     echo "Something went wrong!!";
 }
 
+$_SESSION['muid']=$userid;
 $query = "SELECT Password FROM User WHERE UserID='$userid'";
 $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
 $data = mysql_fetch_assoc($result);

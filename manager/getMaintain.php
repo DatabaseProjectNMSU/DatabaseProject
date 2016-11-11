@@ -26,14 +26,24 @@ include('../Constants.php');
         <div class="col-sm-4">
             <h3>Requests</h3>
            <?php
+           session_start();
+            $propertyid="";
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $_SESSION['pid'] = trim($_POST['propertyid']);
-                $propertyid =$_SESSION['pid'];
+
+                    $propertyid = trim($_POST['propertyid']);
 
             }else{
                 echo "something went wrong!";
             }
+
+           if(!empty($properyid) && !isset($_SESSION['pid'])) {
+                $_SESSION['pid']=$propertyid;
+           }else if(empty($properyid) && isset($_SESSION['pid']) && !empty($_SESSION['pid'])){
+              $propertyid=$_SESSION['pid'];
+           }else if(!empty($propertyid) && isset($_SESSION['pid']) && !empty($_SESSION['pid'])){
+               $_SESSION['pid']=$propertyid;
+           }
 
 
             //$userid = $_SESSION['userid'];
@@ -62,6 +72,7 @@ include('../Constants.php');
                     echo "</tr>";
                 }
                 echo "</table>";
+                echo "<p> the pid is " . $_SESSION['pid'] . "</p>";
             } else {
                 echo "Something went wrong!";
             }
@@ -70,12 +81,21 @@ include('../Constants.php');
             <br>
             <p>Delete Requests</p>
             <form action="deleteMaintain.php" method="POST">
-                RequestID: <input type="text" name="requestid" value=""><br>
+                JobID: <input type="text" name="jobid" value=""><br>
                 UserID: <input type="text" name="userid" value=""><br>
-                Password: <input type="text" name="pw" value=""><br>
+                Password: <input type="password" name="pw" value=""><br>
                 <input type="submit">
             </form>
-
+        </div>
+        <div>
+            <p>Edit Requests</p>
+            <form action="editMaintain.php" method="POST">
+                JobID: <input type="text" name="jobid" value=""><br>
+                Requested Job: <input type="text" name="rjob" value=""><br>
+                Apartment Number: <input type="password" name="aptnum" value=""><br>
+                PropertyID: <input type="password" name="pid" value=""><br>
+                <input type="submit">
+            </form>
 
         </div>
 

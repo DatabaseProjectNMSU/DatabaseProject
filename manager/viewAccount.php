@@ -4,6 +4,7 @@
 session_start();
 include('../Connection.php');
 include('../Constants.php');
+unset($_SESSION['pid']);
 ?>
 <head>
     <title>Manager Account</title>
