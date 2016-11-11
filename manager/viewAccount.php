@@ -4,6 +4,7 @@
 session_start();
 include('../Connection.php');
 include('../Constants.php');
+unset($_SESSION['pid']);
 ?>
 <head>
     <title>Manager Account</title>
@@ -183,6 +184,10 @@ include('../Constants.php');
             <h3>Change Email</h3>
             <p>Blocked an ex?</p>
             <a class="w3-btn" href="editContact.php?a=email">Change Email</a>
+            <h3>Tenant Assignments</h3>
+            <p>Assign Living Quarters?</p>
+            <a class="w3-btn" href="./tenantAssignment.php">View Unassigned Tenants</a>
+
 
         </div>
         <div>
@@ -192,9 +197,60 @@ include('../Constants.php');
                 PropertyID: <input type="text" name="propertyid" value=""><br>
                 <input type="submit">
             </form>
+            <br>
+            <p>Create a Maintainance Request</p>
+            <form action="createMaintain.php" method="POST">
+                Date (YYYY-MM-DD): <input type="text" name="date" value=""><br>
+                Requested Job:<input type="text" name="rjob" value=""><br>
+                Your Manager ID:<input type="text" name="muid" value=""><br>
+                Apartment Number:<input type="text" name="aptnum" value=""><br>
+                PropertyID: <input type="text" name="pid" value=""><br>
+                <input type="submit">
+            </form>
         </div>
+       <!-- <div>
+            <h3>Tenant Assignments</h3>
+            <?php
+            /*
+            $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
+            $query="Select u.UserID, TenantID, FirstName, LastName from User u, (Select * FROM Tenant as t WHERE NOT EXISTS(Select * FROM StayIn as s WHERE t.UserID=s.TenantUID )) as m where u.UserID=m.UserID;";
+            $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+            //$data=mysql_fetch_assoc($result);
+
+            echo "<br>";
+            echo "<p><b>The Following Tenants do not have an assigned apartment!</b></p>";
+            if($result!=null) {
+                echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>UserID</th>";
+                echo "<th>TenantID</th>";
+                echo "<th>FirstName</th>";
+                echo "<th>LastName</th>";
+                echo "</tr>";
+
+                while($row=mysql_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row["UserID"] . "</td>";
+                    echo "<td>" . $row["TenantID"] . "</td>";
+                    echo "<td>" . $row["FirstName"] . "</td>";
+                    echo "<td>" . $row["LastName"] . "</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }else{
+                echo "Something went wrong!";
+            }
+
+
+            mysql_close($conn);
+            */
+            ?>
+
+        </div>-->
+
 
     </div>
+
 </div>
 
 </body>
