@@ -1,3 +1,8 @@
+<?php
+session_start();
+$usertype = $_SESSION['Type'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

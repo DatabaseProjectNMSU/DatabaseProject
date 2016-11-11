@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
+
 <html lang="en">
 <head>
     <title>Barnes & Read Leasing</title>
@@ -12,18 +16,17 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Log-in to Tenant Account</h1>
-    <p>Please enter your information.</p>
+    <h1>New Email</h1>
+    <p>Please enter your new email.</p>
 
     <html>
     <body>
 
-    <form action="../checkPw.php" method="POST">
-        Username: <input type="text" name="uname"><br>
-        Password: <input type="password" name="psw"><br><br>
-
+    <form action="changeMail.php" method="POST">
+        New Email: <input type="text" name="new_email" value=""><br>
         <input type="submit">
     </form>
+
 
     </body>
     </html>

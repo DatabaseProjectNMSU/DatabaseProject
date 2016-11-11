@@ -26,7 +26,7 @@ $_SESSION['Type'] = 'tenant';
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <h3>Tenant Info</h3>
             <!--<p>You can access your account here</p>-->
             <?php
@@ -74,7 +74,7 @@ $_SESSION['Type'] = 'tenant';
             <a class="w3-btn" href="../editInfo.php">Edit Email</a> -->
 
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <h3>Apartment Information</h3>
             <?php
             $userid=$_SESSION['userid'];
@@ -152,7 +152,8 @@ $_SESSION['Type'] = 'tenant';
             mysql_close($conn);
             ?>
         </div>
-        <div class="col-sm-4">
+
+        <div class="col-sm-3">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
             <a class="w3-btn" href="../ChangePassword.php">Change Password</a>
@@ -161,14 +162,63 @@ $_SESSION['Type'] = 'tenant';
             <a class="w3-btn" href="../changePhoneMain.php?a=phone">Change Phone</a>
             <h3>Change Email</h3>
             <p>Blocked an ex?</p>
-            <a class="w3-btn" href="../editContact.php?a=email">Change Email</a>
+            <a class="w3-btn" href="../editEmail.php">Change Email</a>
             <h3>Make Payment</h3>
             <p>Most Important Button Here</p>
             <a class="w3-btn" href="makePayment.php">Make Payment</a>
 
         </div>
     </div>
+    <div class="col-sm-10">
+
+        <?php
+        $userid=$_SESSION['userid'];
+        $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
+        $query="SELECT Payment.TransactionID, PaymentMethod, Amount, Date, 
+TenantUID, PropertyID, ApartmentNumber FROM
+Payment
+JOIN MakePayment
+ON Payment.TransactionID = MakePayment.TransactionID
+WHERE MakePayment.TenantUID = '$userid' ORDER BY Date ASC ;";
+        $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+        //$data=mysql_fetch_assoc($result);
+
+        echo "<br>";
+        echo "<p><b>Payment History</b></p>";
+        if($result!=null) {
+            echo "<table border='1'>";
+            echo "<tr>";
+            echo "<th>TransactionID</th>";
+            echo "<th>Payment Method</th>";
+            echo "<th>Amount</th>";
+            echo "<th>Date</th>";
+            echo "<th>TenantUID</th>";
+            echo "<th>PropertyID</th>";
+            echo "<th>Aprartment Number</th>";
+            echo "</tr>";
+
+            while($row=mysql_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row["TransactionID"] . "</td>";
+                echo "<td>" . $row["PaymentMethod"] . "</td>";
+                echo "<td>" . $row["Amount"] . "</td>";
+                echo "<td>" . $row["Date"] . "</td>";
+                echo "<td>" . $row["TenantUID"] . "</td>";
+                echo "<td>" . $row["PropertyID"] . "</td>";
+                echo "<td>" . $row["ApartmentNumber"] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        }else{
+            echo "Something went wrong!";
+        }
+
+
+        mysql_close($conn);
+        ?>
+    </div>
 </div>
+<br><br>
 
 </body>
 </html>
