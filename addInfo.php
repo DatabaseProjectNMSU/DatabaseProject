@@ -133,7 +133,7 @@ if(strlen($userid)<8 || strlen($userid)>16){
             if (mysql_query($query, $conn)) {
                 echo '<script type="text/javascript">';
                 echo 'alert("Staff Account creation successful!\n Redirecting to login page!");';
-                echo 'document.location.href="./staff.php";';
+                echo 'document.location.href="./staff/staff_log_in.php";';
                 echo '</script>';
                 //mysql_close($conn);
             }
