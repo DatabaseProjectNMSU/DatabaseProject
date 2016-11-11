@@ -194,9 +194,9 @@ unset($_SESSION['pid']);
 
         </div>
         <div>
-        <h3>Maintainance Requests</h3>
-        <p>View Maintainance Requests</p>
-            <form action="getMaintain.php" method="POST">
+        <h3>View and Edit Properties and Offices</h3>
+        <p>View Properties</p>
+            <form action="getProperties.php" method="POST">
                 PropertyID: <input type="text" name="propertyid" value=""><br>
                 <input type="submit">
             </form>
