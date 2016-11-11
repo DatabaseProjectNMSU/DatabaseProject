@@ -16,19 +16,17 @@ session_start();
 <body>
 
 <div class="jumbotron text-center">
-    <h1>New Password</h1>
-    <p>Please enter your new password.</p>
+    <h1>New Email</h1>
+    <p>Please enter your new email.</p>
 
     <html>
     <body>
 
-    <form action="chngcon.php" method="POST">
-        Password: <input type="text" name="passw" value=""><br>
+    <form action="changeMail.php" method="POST">
+        New Email: <input type="text" name="new_email" value=""><br>
         <input type="submit">
     </form>
-    <?php
-    $_SESSION['changeType']="pw";
-    ?>
+
 
     </body>
     </html>

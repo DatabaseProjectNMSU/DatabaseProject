@@ -20,7 +20,7 @@
 
     <form action="../checkPw.php" method="POST">
         Username: <input type="text" name="uname"><br>
-        Password: <input type="password" name="psw">
+        Password: <input type="password" name="psw"><br><br>
 
         <input type="submit">
     </form>

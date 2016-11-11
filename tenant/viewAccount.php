@@ -152,6 +152,51 @@ $_SESSION['Type'] = 'tenant';
             mysql_close($conn);
             ?>
         </div>
+
+        <div class="col-sm-4">
+            <h3>Office Employees</h3>
+            <?php
+            $userid=$_SESSION['userid'];
+            $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
+            $query="Select FirstName, LastName, Birthday, email, PhoneNumber, EmployeeID, Title From Staff s, User u, UserPhoneNumber p where s.UserID=u.UserID and OfficeID='$officeid' and p.UserID=u.userID";
+            $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
+            //$data=mysql_fetch_assoc($result);
+
+            echo "<br>";
+            echo "<p><b>Payment History</b></p>";
+            if($result!=null) {
+                echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>TransactionID</th>";
+                echo "<th></th>";
+                echo "<th>Birthday</th>";
+                echo "<th>email</th>";
+                echo "<th>Phone Number</th>";
+                echo "<th>Employee ID</th>";
+                echo "<th>Title</th>";
+                echo "</tr>";
+
+                while($row=mysql_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row["FirstName"] . "</td>";
+                    echo "<td>" . $row["LastName"] . "</td>";
+                    echo "<td>" . $row["Birthday"] . "</td>";
+                    echo "<td>" . $row["email"] . "</td>";
+                    echo "<td>" . $row["PhoneNumber"] . "</td>";
+                    echo "<td>" . $row["EmployeeID"] . "</td>";
+                    echo "<td>" . $row["Title"] . "</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }else{
+                echo "Something went wrong!";
+            }
+
+
+            mysql_close($conn);
+            ?>
+        </div>
+
         <div class="col-sm-4">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
