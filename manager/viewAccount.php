@@ -4,6 +4,7 @@
 session_start();
 include('../Connection.php');
 include('../Constants.php');
+$_SESSION['Type'] = 'manager';
 unset($_SESSION['pid']);
 ?>
 <head>
@@ -174,23 +175,28 @@ unset($_SESSION['pid']);
         </div>-->
     </div>
     <div>
-        <div class="col-sm-4">
-            <h3>Change Password</h3>
-            <p>Kick out a roommate?</p>
-            <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
-            <h3>Change phone</h3>
+        <div class="col-sm-3">
+            <br><br>
+            <h3>Update or add information</h3>
+            <p>Email hacked?</p>
+            <a class="w3-btn" href="../ChangePassword.php">Change Password</a>
+            <br><br>
             <p>New Iphone?</p>
-            <a class="w3-btn" href="editContact.php?a=phone">Change Phone</a>
-            <h3>Change Email</h3>
+            <a class="w3-btn" href="../changePhoneMain.php">Change Phone</a>
+            <br><br>
+            <p>Another phone?</p>
+            <a class="w3-btn" href="../addPhoneMain.php">Add Phone</a>
+            <br><br>
             <p>Blocked an ex?</p>
-            <a class="w3-btn" href="editContact.php?a=email">Change Email</a>
-            <h3>Tenant Assignments</h3>
+            <a class="w3-btn" href="../editContact.php?a=email">Change Email</a>
+            <br><br>
             <p>Assign Living Quarters?</p>
-            <a class="w3-btn" href="./tenantAssignment.php">View Unassigned Tenants</a>
+            <a class="w3-btn" href="../editEmail.php">View Unassigned Tenants</a>
+            <br><br>
 
 
         </div>
-        <div>
+        <div class = "col-sm-5">
         <h3>Maintainance Requests</h3>
         <p>View Maintainance Requests</p>
             <form action="getMaintain.php" method="POST">
