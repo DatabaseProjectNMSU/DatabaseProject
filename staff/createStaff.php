@@ -16,7 +16,7 @@ $_SESSION['Type']='Staff';
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Create Tenant Account</h1>
+    <h1>Create Staff Account</h1>
     <p>Please enter your information.</p>
 
     <html>
@@ -24,7 +24,7 @@ $_SESSION['Type']='Staff';
 
     <form action="../addInfo.php" method="POST">
         UserID: <input type="text" name="userid" value=""><br>
-        Password:<input type="text" name="pw" value=""><br>
+        Password:<input type="password" name="pw" value=""><br>
         First Name: <input type="text" name="fname" value=""><br>
         Last Name: <input type="text" name="lname" value=""><br>
         E-mail: <input type="text" name="email" value=""><br>
