@@ -193,6 +193,16 @@ unset($_SESSION['pid']);
                 PropertyID: <input type="text" name="propertyid" value=""><br>
                 <input type="submit">
             </form>
+            <br>
+            <p>Create a Maintainance Request</p>
+            <form action="createMaintain.php" method="POST">
+                Date (YYYY-MM-DD): <input type="text" name="date" value=""><br>
+                Requested Job:<input type="text" name="rjob" value=""><br>
+                Your Manager ID:<input type="text" name="muid" value=""><br>
+                Apartment Number:<input type="text" name="aptnum" value=""><br>
+                PropertyID: <input type="text" name="pid" value=""><br>
+                <input type="submit">
+            </form>
         </div>
 
     </div>
