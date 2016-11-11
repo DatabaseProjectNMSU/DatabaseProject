@@ -23,11 +23,13 @@ $uid=$_SESSION['userid'];
 $usertype=$_SESSION['Type'];
 
 $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
-$query="UPDATE User SET email = '$new_email' WHERE UserID = $uid;";
+echo $uid;
+echo $new_email;
+$query="UPDATE User SET email = '$new_email' WHERE UserID = '$uid';";
 
 if (mysql_query($query, $conn)) {
     echo '<script type="text/javascript">';
-    echo 'alert("Phone update successful!\n Redirecting to login page!");';
+    echo 'alert("email update successful!\n Redirecting to login page!");';
     if($usertype = 'tenant'){
         echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/viewAccount.php";';
     }
@@ -41,8 +43,8 @@ if (mysql_query($query, $conn)) {
     mysql_close($conn);
 }else{
     echo '<script type="text/javascript">';
-    echo 'alert("Phone update creation NOT successful!\n Please check old phone.");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/changePhoneMain.php";';
+    echo 'alert("email update creation NOT successful!\n .");';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/editEmail.php";';
     echo '</script>';
 }
 
