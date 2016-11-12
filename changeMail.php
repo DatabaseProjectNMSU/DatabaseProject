@@ -34,7 +34,7 @@ if (mysql_query($query, $conn)) {
         echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/viewAccount.php";';
     }
     else if($usertype == 'employee'){
-        echo 'document.location.href="http://www.cs.nmsu.edu/~rread/employee/viewAccount.php";';
+        echo 'document.location.href="http://www.cs.nmsu.edu/~rread/staff/viewAccount.php";';
     }
     else{
         echo 'document.location.href="http://www.cs.nmsu.edu/~rread/manager/viewAccount.php";';
