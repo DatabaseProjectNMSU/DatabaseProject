@@ -22,7 +22,7 @@ $query = "Update Office Set PhoneNumber='$phone',StreetName='$stname', StreetNum
 if (mysql_query($query, $conn)) {
     echo '<script type="text/javascript">';
     echo 'alert("Edit Successful!");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/staff/viewAccount.php";';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/staff/viewAccount.php";';
     echo '</script>';
     mysql_close($conn);
 } else {

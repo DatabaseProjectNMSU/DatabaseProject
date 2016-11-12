@@ -32,7 +32,7 @@ unset($_SESSION['pid']);
             <?php
             $userid=$_SESSION['userid'];
             $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
-            $query="SELECT * FROM User INNER JOIN UserPhoneNumber WHERE User.UserID='$userid'";
+            $query="SELECT * FROM User NATURAL JOIN UserPhoneNumber WHERE User.UserID='$userid'";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
             $data=mysql_fetch_assoc($result);
 
@@ -121,7 +121,8 @@ unset($_SESSION['pid']);
             <?php
             $userid=$_SESSION['userid'];
             $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
-            $query="Select FirstName, LastName, Birthday, email, PhoneNumber, EmployeeID, Title From Staff s, User u, UserPhoneNumber p where s.UserID=u.UserID and OfficeID='$officeid' and p.UserID=u.userID";
+            $query="Select FirstName, LastName, Birthday, email, PhoneNumber, EmployeeID, Title From Staff s, User u, UserPhoneNumber p where s.UserID=u.UserID and OfficeID=$officeid and p.UserID=u.userID";
+            //$query = "Select firstName, LastName, Birthday, email, PhoneNumber, EmployeeID, Title FROM (Staff OUTER JOIN UserPhoneNumber as p WHERE Staff.UserID = UserPhoneNumber.UserID) OUTER JOIN User WHERE p.;";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
             //$data=mysql_fetch_assoc($result);
 

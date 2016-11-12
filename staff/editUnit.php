@@ -21,7 +21,7 @@ $query = "Update PropertyUnit Set Rent='$rent', Availability='$avail', NumberofB
 if (mysql_query($query, $conn)) {
     echo '<script type="text/javascript">';
     echo 'alert("Edit Successful!");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/staff/viewAccount.php";';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/staff/viewAccount.php";';
     echo '</script>';
     mysql_close($conn);
 } else {
