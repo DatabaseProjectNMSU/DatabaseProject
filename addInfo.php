@@ -15,6 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $lname = trim($_POST['lname']);
         $email = trim($_POST['email']);
         $dob = trim($_POST['dob']);
+        $phn = trim($_POST['phone']);
     }else if($type=='Man'){
         $userid = trim($_POST['userid']);
         $pw = trim($_POST['pw']);
@@ -23,6 +24,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $email = trim($_POST['email']);
         $dob = trim($_POST['dob']);
         $officeid=trim($_POST['officeid']);
+        $phn = trim($_POST['phone']);
     }else if($type=='Staff'){
         $userid = trim($_POST['userid']);
         $pw = trim($_POST['pw']);
@@ -32,6 +34,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $dob = trim($_POST['dob']);
         $title=trim($_POST['title']);
         $officeid=trim($_POST['officeid']);
+        $phn = trim($_POST['phone']);
     }
 } else {
     echo "Something went wrong!!";
@@ -40,7 +43,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 if(strlen($userid)<8 || strlen($userid)>16){
     echo '<script type="text/javascript">';
     echo 'alert("UserID must be at least 8 characters, but no greater than 16!");';
-    //echo 'document.location.href="http://www.cs.nmsu.edu/~rread/createTenant.php";';
+    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/";';
     echo '</script>';
 }else{
     $query="SELECT * FROM User WHERE UserID='$userid'";
@@ -48,7 +51,7 @@ if(strlen($userid)<8 || strlen($userid)>16){
     if(mysql_num_rows($result)>0) {
         echo '<script type="text/javascript">';
         echo 'alert("That UserID is already taken!");';
-      //  echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/createTenant.php";';
+        echo 'document.location.href="http://www.cs.nmsu.edu/~rread/createTenant.php";';
         echo '</script>';
     }else if($type=='Tenant') {
         $query = "insert into User values ('$userid', '$pw', '$fname', '$lname','$dob','$email')";
@@ -66,6 +69,9 @@ if(strlen($userid)<8 || strlen($userid)>16){
             $data = mysql_fetch_assoc($result); //data now holds value needed
 
             $str = ++$data['m'];
+
+            $query = "insert into UserPhoneNumber values ('$userid', $phn);";
+            mysql_query($query, $conn);
 
 
             $query = "insert into Tenant values ('$userid', '$str')";
@@ -94,14 +100,17 @@ if(strlen($userid)<8 || strlen($userid)>16){
             $result = mysql_query($query, $conn) or die('SQL Error :: ' . mysql_error());
             $data = mysql_fetch_assoc($result); //data now holds value needed
 
-            $str = ++$data['m'];
+            $str = $data['m'];
+            ++$str;
 
+            $query = "insert into UserPhoneNumber values ('$userid', $phn);";
+            mysql_query($query, $conn);
 
             $query = "insert into Manager values ('$userid', '$str','$officeid')";
             if (mysql_query($query, $conn)) {
                 echo '<script type="text/javascript">';
                 echo 'alert("Manager Account creation successful!\n Redirecting to login page!");';
-                echo 'document.location.href="http://www.cs.nmsu.edu/~sbarnes/manager.php";';
+                echo 'document.location.href="http://www.cs.nmsu.edu/~rread/manager/man_log_in.php";';
                 echo '</script>';
                 //mysql_close($conn);
             }else {
@@ -127,6 +136,9 @@ if(strlen($userid)<8 || strlen($userid)>16){
             $data = mysql_fetch_assoc($result); //data now holds value needed
 
             $str = ++$data['m'];
+
+            $query = "insert into UserPhoneNumber values ('$userid', $phn);";
+            mysql_query($query, $conn);
 
 
             $query = "insert into Staff values ('$userid', '$str','$title','$officeid')";

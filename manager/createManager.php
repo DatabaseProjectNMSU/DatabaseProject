@@ -30,6 +30,7 @@ $_SESSION['Type']='Man';
         E-mail: <input type="text" name="email" value=""><br>
         Birthday (YYYY-MM-DD): <input type="text" name="dob" value=""><br>
         OfficeID: <input type="text" name="officeid" value=""><br>
+        Phone (numbers only): <input type = "text" name = "phone" value =""><br>
 
         <input type="submit">
     </form>
