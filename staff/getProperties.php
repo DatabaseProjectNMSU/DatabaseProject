@@ -72,7 +72,7 @@ include('../Constants.php');
 
             ?>
             <br>
-            <p>Edit a Unit - Input <u>ALL</u>Information or None!</p>
+            <p><b>Edit a Unit - Input <u>ALL</u> Information or None!</b></p>
             <form action="editUnit.php" method="POST">
                 Apartment Number: <input type="text" name="aptnum" value=""><br>
                 Rent amount: <input type="text" name="rent" value=""><br>
@@ -82,7 +82,7 @@ include('../Constants.php');
                 <input type="submit">
             </form>
         </div>
-        <div>
+        <div class="col-sm-5">
             <?php
             $query="Select * from Property where PropertyID='$propertyid'";
             $result = mysql_query($query,$conn) or die('SQL Error :: '.mysql_error());
@@ -93,6 +93,10 @@ include('../Constants.php');
 
             if($result!=null) {
                 echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>Property Name</th>";
+                echo "<td>".$data["PropertyName"]."</td>";
+                echo "</tr>";
                 echo "<tr>";
                 echo "<th>PropertyID</th>";
                 echo "<td>".$data["PropertyID"]."</td>";
@@ -127,12 +131,16 @@ include('../Constants.php');
             }
             ?>
             <br>
-            <p>Edit Requests</p>
-            <form action="editMaintain.php" method="POST">
-                JobID: <input type="text" name="jobid" value=""><br>
-                Requested Job: <input type="text" name="rjob" value=""><br>
-                Apartment Number: <input type="text" name="aptnum" value=""><br>
-                PropertyID: <input type="text" name="pid" value=""><br>
+
+            <p><b>Edit this property - Input <u>ALL</u> Information or None!</b></p>
+            <form action="editProperty.php" method="POST">
+                New Property Name: <input type="text" name="pname" value=""><br>
+                Street Name: <input type="text" name="stname" value=""><br>
+                Street Number: <input type="text" name="stnum" value=""><br>
+                City: <input type="text" name="city" value=""><br>
+                State: <input type="text" name="state" value=""><br>
+                Zip: <input type="text" name="zip" value=""><br>
+                Manager UserID: <input type="text" name="muid" value=""><br>
                 <input type="submit">
             </form>
 
