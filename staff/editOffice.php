@@ -7,17 +7,18 @@ session_start();
 //echo $type;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $aptnum = trim($_POST['aptnum']);
-    $rent = trim($_POST['rent']);
-    $avail = trim($_POST['avail']);
-    $numbed = trim($_POST['numbed']);
-    $numbath = trim($_POST['numbath']);
+    $phone = trim($_POST['phone']);
+    $stname = trim($_POST['stname']);
+    $stnum = trim($_POST['stnum']);
+    $state = trim($_POST['state']);
+    $zip = trim($_POST['zip']);
 
 }
 
-$pid=$_SESSION['pid'];
+$oid=$_SESSION['oid'];
 
-$query = "Update PropertyUnit Set Rent='$rent', Availability='$avail', NumberofBedRoom='$numbed', NumberOFBathRoom='$numbath' Where PropertyID='$pid' and ApartmentNumber='$aptnum'";
+
+$query = "Update Office Set PhoneNumber='$phone',StreetName='$stname', StreetNumber='$stnum', State='$state', Zip='$zip' Where OfficeID='$oid'";
 if (mysql_query($query, $conn)) {
     echo '<script type="text/javascript">';
     echo 'alert("Edit Successful!");';

@@ -187,10 +187,6 @@ unset($_SESSION['pid']);
             <h3>Change Email</h3>
             <p>Blocked an ex?</p>
             <a class="w3-btn" href="editContact.php?a=email">Change Email</a>
-            <h3>Tenant Assignments</h3>
-            <p>Assign Living Quarters?</p>
-            <a class="w3-btn" href="./tenantAssignment.php">View Unassigned Tenants</a>
-
 
         </div>
         <div>
@@ -201,13 +197,9 @@ unset($_SESSION['pid']);
                 <input type="submit">
             </form>
             <br>
-            <p>Create a Maintainance Request</p>
-            <form action="createMaintain.php" method="POST">
-                Date (YYYY-MM-DD): <input type="text" name="date" value=""><br>
-                Requested Job:<input type="text" name="rjob" value=""><br>
-                Your Manager ID:<input type="text" name="muid" value=""><br>
-                Apartment Number:<input type="text" name="aptnum" value=""><br>
-                PropertyID: <input type="text" name="pid" value=""><br>
+            <p>View an Offce</p>
+            <form action="getOffice.php" method="POST">
+                OfficeID: <input type="text" name="officeid" value=""><br>
                 <input type="submit">
             </form>
         </div>
