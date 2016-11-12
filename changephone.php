@@ -45,7 +45,15 @@ if (mysql_query($query, $conn)) {
 }else{
     echo '<script type="text/javascript">';
     echo 'alert("Phone update creation NOT successful!\n Please check old phone.");';
-    echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/changePhoneMain.php";';
+    if($usertype == 'tenant') {
+        echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/changePhoneMain.php";';
+    }
+    else if($usertype == 'employee'){
+        echo 'document.location.href="http://www.cs.nmsu.edu/~rread/staff/changePhoneMain.php";';
+    }
+    else{
+        echo 'document.location.href="http://www.cs.nmsu.edu/~rread/manager/changePhoneMain.php";';
+    }
     echo '</script>';
 }
 

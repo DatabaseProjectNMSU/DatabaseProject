@@ -27,7 +27,7 @@ $usertype=$_SESSION['Type'];
 if($usertype == 'manager') {
 
     $conn = GetConnection($DBUser, $DBpass, $DBHost, $DBname);
-    $query = "INSERT INTO UserPhoneNumber '$userid', $new_phn;";
+    $query = "INSERT INTO UserPhoneNumber VALUES ('$userid', $new_phn);";
 
     if (mysql_query($query, $conn)) {
         echo '<script type="text/javascript">';
@@ -38,14 +38,14 @@ if($usertype == 'manager') {
         mysql_close($conn);
     } else {
         echo '<script type="text/javascript">';
-        echo 'alert("Phone update creation NOT successful!\n Please check old phone.");';
+        echo 'alert("Phone update creation NOT successful!\n");';
         echo 'document.location.href="http://www.cs.nmsu.edu/~rread/manager/addPhoneMain.php";';
         echo '</script>';
     }
 }
 else{
     echo '<script type="text/javascript">';
-    echo 'alert("Phone update creation NOT successful!\n Please check old phone.");';
+    echo 'alert("Phone update creation NOT successful!\n Please check Usertype");';
     echo 'document.location.href="http://www.cs.nmsu.edu/~rread/";';
     echo '</script>';
 }
