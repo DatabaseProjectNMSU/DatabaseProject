@@ -189,10 +189,10 @@ unset($_SESSION['pid']);
             <a class="w3-btn" href="../addPhoneMain.php">Add Phone</a>
             <br><br>
             <p>Blocked an ex?</p>
-            <a class="w3-btn" href="../editContact.php?a=email">Change Email</a>
+            <a class="w3-btn" href="../editEmail.php">Change Email</a>
             <br><br>
             <p>Assign Living Quarters?</p>
-            <a class="w3-btn" href="../editEmail.php">View Unassigned Tenants</a>
+            <a class="w3-btn" href="./tenantAssignment.php">View Unassigned Tenants</a>
             <br><br>
 
 
