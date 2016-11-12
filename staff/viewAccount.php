@@ -4,10 +4,11 @@
 session_start();
 include('../Connection.php');
 include('../Constants.php');
+$_SESSION['Type']='employee';
 unset($_SESSION['pid']);
 ?>
 <head>
-    <title>Manager Account</title>
+    <title>Staff Account</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -164,7 +165,7 @@ unset($_SESSION['pid']);
         <!--<div class="col-sm-4">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
-            <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
+            <a class="w3-btn" href="ChangePassword.php?a=pass">Change Password</a>
             <h3>Change phone</h3>
             <p>New Iphone?</p>
             <a class="w3-btn" href="editContact.php?a=phone">Change Phone</a>
@@ -181,13 +182,13 @@ unset($_SESSION['pid']);
         <div class="col-sm-4">
             <h3>Change Password</h3>
             <p>Kick out a roommate?</p>
-            <a class="w3-btn" href="ChangePassword.php?a=password">Change Password</a>
+            <a class="w3-btn" href="../ChangePassword.php">Change Password</a>
             <h3>Change phone</h3>
             <p>New Iphone?</p>
-            <a class="w3-btn" href="editContact.php?a=phone">Change Phone</a>
+            <a class="w3-btn" href="../changePhoneMain.php">Change Phone</a>
             <h3>Change Email</h3>
             <p>Blocked an ex?</p>
-            <a class="w3-btn" href="editContact.php?a=email">Change Email</a>
+            <a class="w3-btn" href="../editEmail.php">Change Email</a>
 
         </div>
         <div>

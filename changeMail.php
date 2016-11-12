@@ -30,10 +30,10 @@ $query="UPDATE User SET email = '$new_email' WHERE UserID = '$uid';";
 if (mysql_query($query, $conn)) {
     echo '<script type="text/javascript">';
     echo 'alert("email update successful!\n Redirecting to login page!");';
-    if($usertype = 'tenant'){
+    if($usertype == 'tenant'){
         echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/viewAccount.php";';
     }
-    else if($usertype = 'employee'){
+    else if($usertype == 'employee'){
         echo 'document.location.href="http://www.cs.nmsu.edu/~rread/employee/viewAccount.php";';
     }
     else{

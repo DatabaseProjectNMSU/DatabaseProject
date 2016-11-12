@@ -10,7 +10,7 @@ include('Connection.php');
 include('Constants.php');
 
 $conn= GetConnection($DBUser, $DBpass, $DBHost,$DBname);
-$usertype = $_SESSION['Type'];
+
 
 if($_SERVER['REQUEST_METHOD']=='POST') {
     $pwd = trim($_POST['passw']);
@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
     echo "Something went wrong!!";
 }
 
-
+$usertype = $_SESSION['Type'];
 $userid=$_SESSION['userid'];
 echo $usertype;
 
@@ -34,7 +34,7 @@ if($username == $userid) {
         if ($usertype == 'tenant') {
             echo 'document.location.href="http://www.cs.nmsu.edu/~rread/tenant/viewAccount.php";';
         } else if ($usertype == 'employee') {
-            echo 'document.location.href="http://www.cs.nmsu.edu/~rread/employee/viewAccount.php";';
+            echo 'document.location.href="http://www.cs.nmsu.edu/~rread/staff/viewAccount.php";';
         } else {
             echo 'document.location.href="http://www.cs.nmsu.edu/~rread/manager/viewAccount.php";';
         }
