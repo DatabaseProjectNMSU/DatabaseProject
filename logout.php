@@ -5,7 +5,6 @@
  * Date: 11/10/16
  * Time: 3:07 PM
  */
-echo 'Logged out';
 
 unset($_SESSION['userid']);
 session_destroy();
