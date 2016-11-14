@@ -19,10 +19,15 @@ $pid=$_SESSION['pid'];
 
 $query = "Update PropertyUnit Set Rent='$rent', Availability='$avail', NumberofBedRoom='$numbed', NumberOFBathRoom='$numbath' Where PropertyID='$pid' and ApartmentNumber='$aptnum'";
 if (mysql_query($query, $conn)) {
+    if($avail=='Y'){
+        $query="DELETE FROM StayIn WHERE PropertyID=$pid AND ApartmentNumber=$aptnum;";
+        mysql_query($query, $conn);
+    }
     echo '<script type="text/javascript">';
     echo 'alert("Edit Successful!");';
     echo 'document.location.href="http://www.cs.nmsu.edu/~rread/staff/viewAccount.php";';
     echo '</script>';
+
     mysql_close($conn);
 } else {
     mysql_error();
